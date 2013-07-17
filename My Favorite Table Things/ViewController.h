@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditViewController.h"
+#import "UpdateFavoriteDelegate.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UpdateFavoriteDelegate>
 
 @end

@@ -10,6 +10,7 @@
 
 @interface ViewController ()
 {
+    int row;
     __weak IBOutlet UITextField *myTextField;
     
     __weak IBOutlet UITableView *myTableView;
@@ -68,6 +69,20 @@
 {
     return [myArray count];
 }
-
-
+#pragma mark UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    EditViewController *editViewController;
+    editViewController = [[EditViewController alloc] initWithNibName:nil bundle:nil];
+    editViewController.incomingString = [myArray objectAtIndex:indexPath.row];
+    row = indexPath.row;
+    [self.navigationController pushViewController:editViewController animated:YES];
+    editViewController.delegate = self;
+}
+#pragma mark UpdateFavoriteDelegate
+-(void)UpdateFavorite:(NSString *)value;
+{
+    [myArray replaceObjectAtIndex:row withObject:value];
+    [myTableView reloadData];
+}
 @end
